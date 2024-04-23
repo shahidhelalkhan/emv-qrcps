@@ -1,5 +1,5 @@
 /* eslint-disable no-return-assign */
-const { crc16ccitt } = require('crc');
+const { crc16 } = require('crc');
 
 const EMPTY_VALUE = '';
 const PAD_ZERO = '00';
@@ -693,7 +693,7 @@ const format = (id, value) => {
 const formatCrc = (value) => {
     if (value && value !== '') {
         const newValue = value + ID.IDCRC + '04';
-        const crcValue = crc16ccitt(newValue).toString(16).toUpperCase().padStart(4, '0');
+        const crcValue = crc16(newValue).toString(16).toUpperCase().padStart(4, '0');
         return format(ID.IDCRC, crcValue);
     }
     return '';
